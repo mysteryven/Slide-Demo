@@ -1,41 +1,31 @@
 .window {
   margin: 50px auto;
-  width: 300px;
   box-shadow: 2px 2px 4px gray;
-  padding: 16px 20px;
+  width: 400px;
+  height: 380px;
   border: 1px solid #bbb;
   border-radius: 8px;
+  overflow: hidden;
 }
 .images {
   position: relative;
-  width: 300px;
+  width: 400px;
   height: 300px;
   cursor: pointer;
-  overflow: hidden;
-}
-img {
-  position: absolute;
-  top: 0;
-  transition: all 0.7s;
-  
+  display: flex;
+  transition: all 0.3s;
 }
 
-img.enter {
-  left: 100%;   
-  z-index: -1;
-}
-img.current{
-  left: 0;
-  z-index: 1;
-}
-img.leave {
-  left: -100%;
-}
-.allButtons {
+.buttons,.changePicture {
   display: flex;
   justify-content: center;
   cursor: pointer;
 }
-.allButtons span {
+.buttons span  {
   margin-left: 10px;
+  padding: 8px;
 }
+.changePicture span{
+  padding: 8px 16px;
+}
+

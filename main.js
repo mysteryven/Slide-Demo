@@ -1,77 +1,88 @@
-$imgs = $('div>img');   // Imgs-Array
-let length  = $imgs.length;
-let index = 0; // 图片的索引从 0 开始
+
+let current = 0;
+let $buttons = $('#buttons')
+let len = $('#buttons>span').length
 let timer;
+$(images).css({
+  'transform': 'translateX(-400px)'
+})
 
-init();  //  初始化图片状态
-runSlide();  // 开始轮播
-listenToUser();  // 滑入停止轮播 滑出继续
+makeFakeSlide();
+eventBindings()
+autoSlide();
 
-
-
-//  工具函数
-function runSlide() {
-  timer = setInterval(()=> {
-    makeLeave(getImg(index)).one('transitionend', (e)=> {
-      makeEnter($(e.currentTarget));
-    });
-    makeCurrent(getImg(index+1));
-    index++;  
-  },2000)
-}
-
-function listenToUser() {
-  $('.images').on('mouseenter', (e)=> {
-    window.clearInterval(timer);
-  })
-  $('.images').on('mouseleave', ()=> {
-    runSlide();
-  })
-}
-
-function getImg(index) {
-  let n = getIndex(index);
-  return $imgs.eq(n);
-}
-function init() {
-  $imgs.eq(0).addClass('current').siblings().addClass('enter');
-}
-function makeCurrent($node){
-  return $node.removeClass('enter').addClass('current');
-}
-function makeLeave($node){
-  return $node.removeClass('current').addClass('leave');
-}
-function makeEnter($node){
-  return $node.removeClass('leave').addClass('enter');
-}
-function getIndex(index) {
-    return index % length;
-}
-
-
-
-
-
-/**** 方法2 **********/
-
-/*
-let n = 1
-setInterval(()=> 
-  $(`div>img:nth-child(${getN(n)})`).removeClass('current').addClass('leave').one('transitionend', (e)=> {
-     $(e.currentTarget).removeClass('leave').addClass('enter');
-  })
-  $(`div>img:nth-child(${getN(n+1)})`).removeClass('enter').addClass('current');
-  n++;
-}, 3000)
-
-function getN(n) {
-  n = n % length;
-  if (n===0) {
-    return length;
+function autoSlide() {
+  timer = setInterval(()=>{
+    goToSlide(current+1);
   }
-
-  return n;
+  ,3000)
+  $('#windows').on('mouseenter', ()=> {
+    window.clearInterval(timer)
+  })
+  $('#windows').on('mouseleave', ()=> {
+    timer = setInterval(()=>{
+    goToSlide(current+1);
+  }
+  ,3000)
+  })
 }
-*/
+
+$(prev).on('click', ()=>{
+  goToSlide(current-1);
+});
+$(next).on('click', ()=> {
+  goToSlide(current+1);
+})
+
+function eventBindings() {
+  $buttons.on('click','span', (e)=>{
+    let $button = $(e.currentTarget);
+    let index = $button.index();
+    goToSlide(index);
+  })
+}
+function makeFakeSlide() {
+  let $imgs = $('#images>img');
+  let first = $imgs.eq(0).clone(true);
+  let last  =  $imgs.eq($imgs.length-1).clone(true);
+  $(images).prepend(last);
+  $(images).append(first);
+}
+function goToSlide(index) {
+  if (index===len) {
+    index = 0;
+  }
+  if (index===len-1 && current===0) {
+    $(images).css({
+      'transform': `translateX(0px)`
+    }).one('transitionend', (e)=>{
+      $(images).hide().offset()
+      $(images).css({
+        'transform': `translateX(${-400*(index+1)}px)`
+      }).show();
+    })
+  } else if (index===0 && current===len-1) {
+    console.log(1);
+    $(images).css({
+      'transform': `translateX(${-400*(len+1)}px)`
+    }).one('transitionend', (e)=>{
+      $(images).hide().offset()
+      $(images).css({
+        'transform': `translateX(-400px)`
+      }).show();
+    })
+
+  }else {
+    $(images).css({
+      'transform': `translateX(${-400*(index+1)}px)`
+    })
+  }
+  current = index;
+}
+
+
+
+
+
+
 
