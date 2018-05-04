@@ -1,31 +1,59 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
 .window {
-  margin: 50px auto;
-  box-shadow: 2px 2px 4px gray;
-  width: 400px;
-  height: 380px;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.images {
   position: relative;
-  width: 400px;
-  height: 300px;
-  cursor: pointer;
-  display: flex;
-  transition: all 0.3s;
+  width: 920px;
+  margin: 100px auto;
+  border: 2px solid black;
+  overflow: hidden;
+  border: 1px solid  #d0d0d0;
+  box-shadow: 1px 1px 2px #d5d5d5, -1px -1px 2px #d5d5d5;
 }
-
-.buttons,.changePicture {
+.imgs {
+  display: flex;
+  width: 920px;  
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.buttons {
+  border: 1px solid #d0d0d0;
+  background: linear-gradient(to bottom, #f4f4f4, #ececec);
+  text-align: center;
   display: flex;
   justify-content: center;
-  cursor: pointer;
 }
-.buttons span  {
-  margin-left: 10px;
-  padding: 8px;
+.buttons span {
+  border: 1px solid #dddddd;
+  padding: 12px 16px 8px 16px;
+  margin: 0 1px;
+  position: relative;
+  transition: all 0.4s;
+  cursor: pointer
 }
-.changePicture span{
-  padding: 8px 16px;
+.buttons span:hover {
+  background-color: #ffffff;
 }
-
+.buttons span.active {
+  background: linear-gradient(to left, #a8a8a8, #e1e1e1, #a8a8a8);
+}
+.buttons span.active::before {
+  content: '';
+  display: block;
+  border: 10px solid transparent;
+  border-top-color: white;
+  position: absolute;
+  top: -4px;
+  left: 26px;
+}
+.prev {
+  position: absolute;
+  top: 40%;
+  left: 5%;
+}
+.next {
+  position: absolute;
+  top: 40%;
+  right: 5%;
+}

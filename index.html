@@ -4,25 +4,41 @@
   <meta charset="UTF-8">
   <title>无缝轮播</title>
   <link rel="stylesheet" href="./style.css">
+  <style type="text/css">
+    .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
+</style>
+
 </head>
 <body>
   <div class="window" id="windows">
-    <div class="images" id="images">
-      <img src="images/1.png" alt="picture1" width="400"></img>
-      <img src="images/2.png" alt="picture2" width="400"></img>
-      <img src="images/3.png" alt="picture3" width="400"></img>
-      <img src="images/4.png" alt="picture4" width="400"></img>
+    <div class="imgs" id="images">
+      <img width=920px height =400px src="imgs/macbook.jpg" >
+      <img width=920px height =400px src="imgs/imac.jpg" >
+      <img width=920px height =400px src="imgs/iphone.jpg">
+      <img width=920px height =400px src="imgs/info.jpg">
     </div>
     <div class="buttons" id="buttons">
-      <span>1</span>
-      <span>2</span>
-      <span>3</span>
-      <span>4</span>
+      <span class="active"><img width=36 height=36 src="imgs/thumb_macbook.png"></span>
+      <span><img width=36 height=36 src="imgs/thumb_imac.png"></span>
+      <span><img width=36 height=36 src="imgs/thumb_iphone.png"></span>
+      <span><img width=36 height=36 src="imgs/thumb_about.png"></span>
     </div>
-    <div class="changePicture">
-      <span id="prev">Prev</span>
-      <span id="next">Next</span>
+    <div class="next" id="next">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-left1"></use>
+      </svg>
     </div>
+    <div class="prev" id="prev">
+       <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-left"></use>
+      </svg>
+    </div>
+  <script src="//at.alicdn.com/t/font_653138_27oi79bja284obt9.js"></script>
   <script src="./jquery.js"></script>
   <script src="./main.js"></script>
 </body>

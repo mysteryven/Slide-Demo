@@ -1,0 +1,31 @@
+translateX
+
+
+鼠标事件
+onclick
+onmousedown
+onmousemove
+onmouseup
+onmouseenter
+
+触摸事件
+ontouchstart
+ontouchmove
+ontouchend
+transition vs animation
+
+动画效果
+transition..
+...
+
+
+常用的API
+window.onscroll
+a.getAttribute('href') --> 本来就是那样的
+a.href --> 被浏览器处理过的
+element.offsetTop 元素到顶部的固定高度
+document.getElementById -> 一项
+document.getElementsById -> 数组
+tagName
+querySelectorAll -> 返回数组
+querySelector -> 返回一项
